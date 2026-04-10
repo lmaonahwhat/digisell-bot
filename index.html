@@ -1,0 +1,997 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link rel="stylesheet" href="style.css?=v41" />
+    <link rel="stylesheet" href="products.css?=v41" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <title>DigiSell Магазин</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="products.js?=v41"></script>
+    <script src="script.js?=v41"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="top-widgets">
+          <div
+            class="widget-btn"
+            id="top-fav-widget"
+            onclick="goToPage('favorites-page', 'Избранное')"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+              ></path>
+            </svg>
+            <span class="badge" id="top-fav-badge">0</span>
+          </div>
+
+          <div
+            class="widget-btn"
+            id="top-cart-widget"
+            onclick="goToPage('cart-page', 'Корзина')"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+              <path d="M3 6h18" />
+              <path d="M16 10a4 4 0 0 1-8 0" />
+            </svg>
+            <span class="badge" id="top-cart-badge">0</span>
+          </div>
+        </div>
+
+        <img src="./img/logo_bot.png" alt="DigiSell" class="logo" />
+        <h2 class="slogan">Выберите интересующую вас категорию:</h2>
+        <div class="buttons">
+          <button class="btn btn-1" onclick="goToPage('steam-page', 'Steam')">
+            <img src="./img/Steam_icon_logo.png" alt="Steam" class="btn-icon" />
+            <div class="btn-content">
+              <div class="btn-title">Steam</div>
+              <div class="btn-subtitle">Игры, Пополнение баланса, Аккаунты</div>
+            </div>
+          </button>
+
+          <button
+            class="btn btn-2"
+            onclick="goToPage('spotify-page', 'Подписки')"
+          >
+            <img src="./img/Spotify.png" alt="Spotify" class="btn-icon" />
+            <div class="btn-content">
+              <div class="btn-title">Подписки</div>
+              <div class="btn-subtitle">Spotify, Youtube, ChatGPT</div>
+            </div>
+          </button>
+
+          <button
+            class="btn btn-3"
+            onclick="goToPage('telegram-page', 'Telegram')"
+          >
+            <img src="./img/Telegram.png" alt="Telegram" class="btn-icon" />
+            <div class="btn-content">
+              <div class="btn-title">Telegram</div>
+              <div class="btn-subtitle">Premium, Звезды</div>
+            </div>
+          </button>
+
+          <button class="btn btn-4" onclick="goToPage('apple-page', 'Apple')">
+            <img src="./img/Apple.png" alt="Apple" class="btn-icon" />
+            <div class="btn-content">
+              <div class="btn-title">Apple iTunes</div>
+              <div class="btn-subtitle">Подарочные карты</div>
+            </div>
+          </button>
+        </div>
+
+        <div class="contacts">
+          <div class="contacts-text">Новости, скидки, события:</div>
+          <div class="contacts-buttons">
+            <a
+              href="https://t.me/digiselloff"
+              class="contact-btn telegram-btn"
+              target="_blank"
+            >
+              <img
+                src="./img/Telegram.png"
+                alt="Telegram"
+                class="btn-icon-small"
+              />Telegram
+            </a>
+            <a
+              href="https://vk.com/digiselloff?t2fs=71c1f7ee1d06271a1c_2P"
+              class="contact-btn vk-btn"
+              target="_blank"
+            >
+              <img
+                src="./img/VK.png"
+                alt="VK"
+                class="btn-icon-small"
+              />ВКонтакте
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="steam-page" class="content-section" style="display: none">
+      <div class="steam-navigation">
+        <div
+          class="steam-card wide steam-card-games"
+          onclick="goToPage('steam-games', 'Steam', 'Игры')"
+        >
+          <div class="card-overlay">
+            <span class="card-title">Игры</span>
+            <span class="card-desc">Новинки и хиты для твоего региона</span>
+          </div>
+          <img src="./img/games.png" class="games-fan-img" alt="games" />
+        </div>
+
+        <div class="steam-row">
+          <div
+            class="steam-card half"
+            onclick="goToPage('steam-topup', 'Steam', 'Пополнение')"
+          >
+            <div class="card-overlay">
+              <span class="card-title">Пополнение баланса</span>
+            </div>
+            <img src="./img/wallet.png" class="games-fan-img" alt="games" />
+          </div>
+
+          <div
+            class="steam-card half"
+            onclick="goToPage('steam-accounts', 'Steam', 'Аккаунты')"
+          >
+            <div class="card-overlay">
+              <span class="card-title">Аккаунт другого региона</span>
+            </div>
+            <img src="./img/account.png" class="games-fan-img" alt="games" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="steam-games"
+      class="content-section"
+      style="display: none; padding: 15px"
+    >
+      <div class="search-container-steam">
+        <div class="search-wrapper">
+          <input
+            type="text"
+            id="steam-search-input"
+            placeholder="Найти игру"
+            oninput="handleSteamSearch()"
+          />
+          <svg
+            class="search-icon"
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </div>
+      </div>
+
+      <div id="promo-view-container" style="display: none">
+        <div class="promo-header-simple">
+          <div onclick="closePromoView()" class="back-arrow-btn">&#10094;</div>
+          <h2 id="promo-view-title">Название акции</h2>
+        </div>
+
+        <div id="promo-games-grid" class="products-grid"></div>
+      </div>
+
+      <div id="steam-promo-carousel" class="promo-carousel"></div>
+
+      <div id="steam-categories-container"></div>
+
+      <div id="steam-games-display" class="products-grid"></div>
+    </div>
+
+    <div
+      id="steam-topup"
+      class="content-section"
+      style="display: none; padding: 20px 15px"
+    >
+      <div class="topup-container">
+        <div class="input-group">
+          <label class="input-label">Логин Steam:</label>
+          <div class="input-wrapper">
+            <input
+              type="text"
+              id="steam-login"
+              placeholder="Введите ваш логин"
+              oninput="validateTopup()"
+              autocorrect="off"
+              autocapitalize="none"
+              spellcheck="false"
+            />
+            <div class="info-icon" onclick="openPopup()">?</div>
+          </div>
+        </div>
+
+        <div class="topup-calculator" style="margin-top: 20px">
+          <div class="input-label">Сумма пополнения:</div>
+
+          <div class="topup-input-container">
+            <input
+              type="number"
+              id="amount-input"
+              placeholder="0"
+              oninput="calculateTopup()"
+            />
+
+            <div class="currency-select">
+              <div class="currency-current" onclick="toggleCurrencyList()">
+                <span id="current-currency-symbol">₽</span>
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </div>
+              <div id="currency-list" class="currency-options">
+                <div onclick="changeCurrency('RUB')">🇷🇺 ₽ (Рубль)</div>
+                <div onclick="changeCurrency('KZT')">🇰🇿 ₸ (Тенге)</div>
+                <div onclick="changeCurrency('UAH')">🇺🇦 ₴ (Гривна)</div>
+                <div onclick="changeCurrency('USD')">$ (Доллар)</div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            id="amount-error"
+            style="
+              color: #ef4444;
+              font-size: 12px;
+              margin-top: 5px;
+              display: none;
+            "
+          ></div>
+
+          <div id="presets-grid" class="presets-grid"></div>
+
+          <div
+            id="final-price-display"
+            class="final-price-box"
+            style="display: none"
+          >
+            <span>К оплате</span>
+            <div class="total-wrapper">
+              <span id="total-cost">0</span>
+              <span class="currency-symbol-final">₽</span>
+            </div>
+          </div>
+
+          <div
+            id="topup-payment-block"
+            class="payment-wrapper"
+            style="display: none; margin-top: 25px"
+          >
+            <div class="payment-method">
+              <div class="method-info">
+                <span class="method-title">Способ оплаты</span>
+                <span class="method-name">Система быстрых платежей</span>
+              </div>
+              <img src="img/SBP.png" class="sbp-logo" alt="СБП" />
+            </div>
+            <button class="final-buy-btn">Продолжить</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="login-popup" class="popup-overlay" onclick="closePopup()">
+      <div class="popup-content" onclick="event.stopPropagation()">
+        <div class="popup-header">
+          <h3>Обратите внимание!</h3>
+        </div>
+        <div class="popup-body">
+          <p>Логин — это то, что вы указываете при входе в Steam.</p>
+          <p>
+            Если вы укажете <strong>неверный логин</strong>, то средства уйдут
+            другому пользователю.
+          </p>
+        </div>
+        <button class="popup-close-btn" onclick="closePopup()">Понятно</button>
+      </div>
+    </div>
+    <div
+      id="steam-accounts"
+      class="content-section"
+      style="display: none; padding: 20px 15px"
+    >
+      <div class="advantage-row">
+        <div class="adv-item">
+          <div class="adv-icon">⚡️</div>
+          <div class="adv-title">Быстро</div>
+          <div class="adv-text">Доставка до 15 мин.</div>
+        </div>
+        <div class="adv-item">
+          <div class="adv-icon">🛡️</div>
+          <div class="adv-title">Надежно</div>
+          <div class="adv-text">Гарантия от бана</div>
+        </div>
+        <div class="adv-item">
+          <div class="adv-icon">👤</div>
+          <div class="adv-title">Лично</div>
+          <div class="adv-text">Доступ только у вас</div>
+        </div>
+      </div>
+
+      <div class="info-accordions">
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span>Зачем нужен другой регион?</span>
+            <svg
+              class="arrow-icon"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </div>
+          <div class="accordion-content">
+            <p>
+              Переход на регионы Турция, Казахстан или Украина позволяет
+              покупать игры, недоступные в РФ, и экономить до 70% на
+              распродажах. Вы получаете полноценный аккаунт без ограничений.<br /><br />
+              Подробнее о том, аккаунт какого региона лучше приобретать вы
+              можете ознакомиться, прочитав нашу статью во ВКонтакте:
+              <a
+                href="https://vk.com/@digiselloff-kakoi-region-vybrat-dlya-akkaunta-v-steam-sravnenie-regionov"
+                >Статья</a
+              >
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span>Что я получу после оплаты?</span>
+            <svg
+              class="arrow-icon"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </div>
+          <div class="accordion-content">
+            <p>
+              Сразу после покупки вы получите логин и пароль от самого аккаунта
+              Steam, а также полные данные от привязанной «родной» почты.
+              Аккаунт будет полностью вашим навсегда.
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span>Правила безопасности</span>
+            <svg
+              class="arrow-icon"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </div>
+          <div class="accordion-content">
+            <p>
+              Сразу после входа смените пароли на почте и в Steam, привяжите
+              свой телефон и включите Steam Guard. Запрещено пополнять баланс
+              картой другого региона (моментальный бан). Мы гарантируем
+              работоспособность при выдаче. В случае кражи или утери доступа
+              после покупки ответственность несет владелец. Возврат средств не
+              предусмотрен — только замена на рабочий товар.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="region-select-section">
+        <div class="input-label">Выберите регион аккаунта:</div>
+
+        <div class="custom-select" id="regionSelector">
+          <div class="select-trigger" onclick="toggleDropdown()">
+            <span id="selected-name">Нажмите, чтобы выбрать...</span>
+            <svg
+              class="select-arrow"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </div>
+
+          <div class="select-options" id="regionOptions">
+            <div class="option" onclick="selectRegion('Казахстан 🇰🇿', true)">
+              <span>Казахстан 🇰🇿</span> <span class="badge-hit">ХИТ</span>
+            </div>
+            <div class="option" onclick="selectRegion('Украина 🇺🇦', true)">
+              <span>Украина 🇺🇦</span> <span class="badge-hit">ХИТ</span>
+            </div>
+            <div class="option" onclick="selectRegion('Турция 🇹🇷', true)">
+              <span>Турция 🇹🇷</span> <span class="badge-hit">ХИТ</span>
+            </div>
+            <div class="option" onclick="selectRegion('Китай 🇨🇳', true)">
+              <span>Китай 🇨🇳</span> <span class="badge-hit">ХИТ</span>
+            </div>
+            <div class="option" onclick="selectRegion('Индия 🇮🇳', true)">
+              <span>Индия 🇮🇳</span> <span class="badge-hit">ХИТ</span>
+            </div>
+            <div class="option" onclick="selectRegion('Аргентина 🇦🇷', true)">
+              <span>Аргентина 🇦🇷</span> <span class="badge-hit">ХИТ</span>
+            </div>
+
+            <div class="option" onclick="selectRegion('Россия 🇷🇺')">
+              Россия 🇷🇺
+            </div>
+            <div class="option" onclick="selectRegion('США 🇺🇸')">США 🇺🇸</div>
+            <div class="option" onclick="selectRegion('Великобритания 🇬🇧')">
+              Великобритания 🇬🇧
+            </div>
+            <div class="option" onclick="selectRegion('Беларусь 🇧🇾')">
+              Беларусь 🇧🇾
+            </div>
+            <div class="option" onclick="selectRegion('Кыргызстан 🇰🇬')">
+              Кыргызстан 🇰🇬
+            </div>
+            <div class="option" onclick="selectRegion('Азербайджан 🇦🇿')">
+              Азербайджан 🇦🇿
+            </div>
+            <div class="option" onclick="selectRegion('Узбекистан 🇺🇿')">
+              Узбекистан 🇺🇿
+            </div>
+            <div class="option" onclick="selectRegion('Пакистан 🇵🇰')">
+              Пакистан 🇵🇰
+            </div>
+            <div class="option" onclick="selectRegion('Европа 🇪🇺')">
+              Европа 🇪🇺
+            </div>
+            <div class="option" onclick="selectRegion('Франция 🇫🇷')">
+              Франция 🇫🇷
+            </div>
+            <div class="option" onclick="selectRegion('Германия 🇩🇪')">
+              Германия 🇩🇪
+            </div>
+            <div class="option" onclick="selectRegion('Польша 🇵🇱')">
+              Польша 🇵🇱
+            </div>
+            <div class="option" onclick="selectRegion('Швейцария 🇨🇭')">
+              Швейцария 🇨🇭
+            </div>
+            <div class="option" onclick="selectRegion('Румыния 🇷🇴')">
+              Румыния 🇷🇴
+            </div>
+            <div class="option" onclick="selectRegion('Кипр cy')">Кипр 🇨🇾</div>
+            <div class="option" onclick="selectRegion('Филиппины 🇵🇭')">
+              Филиппины 🇵🇭
+            </div>
+            <div class="option" onclick="selectRegion('Грузия 🇬🇪')">
+              Грузия 🇬🇪
+            </div>
+            <div class="option" onclick="selectRegion('Молдова 🇲🇩')">
+              Молдова 🇲🇩
+            </div>
+            <div class="option" onclick="selectRegion('Южная Корея 🇰🇷')">
+              Южная Корея 🇰🇷
+            </div>
+            <div class="option" onclick="selectRegion('Тайвань 🇹🇼')">
+              Тайвань 🇹🇼
+            </div>
+            <div class="option" onclick="selectRegion('Япония 🇯🇵')">
+              Япония 🇯🇵
+            </div>
+            <div class="option" onclick="selectRegion('Малайзия 🇲🇾')">
+              Малайзия 🇲🇾
+            </div>
+            <div class="option" onclick="selectRegion('Бразилия 🇧🇷')">
+              Бразилия 🇧🇷
+            </div>
+            <div class="option" onclick="selectRegion('Южная Африка 🇿🇦')">
+              Южная Африка 🇿🇦
+            </div>
+            <div class="option" onclick="selectRegion('Чили 🇨🇱')">Чили 🇨🇱</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="payment-block" class="payment-wrapper" style="display: none">
+        <div class="payment-method">
+          <div class="method-info">
+            <span class="method-title">Способ оплаты</span>
+            <span class="method-name">Система быстрых платежей</span>
+          </div>
+          <img src="img/SBP.png" class="sbp-logo" alt="СБП" />
+        </div>
+
+        <button class="final-buy-btn">Приобрести аккаунт (300 рублей)</button>
+      </div>
+    </div>
+
+    <div id="spotify-page" class="content-section" style="display: none">
+      <div class="subs-container">
+        <div class="selector-group services">
+          <div
+            class="selector-item active"
+            onclick="selectService('spotify')"
+            data-service="spotify"
+          >
+            Spotify
+          </div>
+          <div
+            class="selector-item"
+            onclick="selectService('youtube')"
+            data-service="youtube"
+          >
+            YouTube
+          </div>
+          <div
+            class="selector-item"
+            onclick="selectService('chatgpt')"
+            data-service="chatgpt"
+          >
+            ChatGPT
+          </div>
+        </div>
+
+        <div class="selector-group durations" id="durations-row"></div>
+
+        <div id="subs-products-display" class="products-grid"></div>
+      </div>
+    </div>
+
+    <div id="telegram-page" class="content-section" style="display: none">
+      <div
+        class="tg-tabs-wrapper"
+        style="padding: 0 15px; margin-bottom: 20px; margin-top: 10px"
+      >
+        <div class="tg-tabs-nav">
+          <div class="tg-tab-active-bg" id="tg-tab-bg"></div>
+          <div
+            class="tg-tab-item active"
+            id="tab-premium"
+            onclick="switchTgTab('premium')"
+          >
+            Premium
+          </div>
+          <div
+            class="tg-tab-item"
+            id="tab-stars"
+            onclick="switchTgTab('stars')"
+          >
+            Звезды
+          </div>
+        </div>
+      </div>
+
+      <div id="telegram-products-container"></div>
+
+      <div
+        id="stars-form-container"
+        class="stars-form-wrapper"
+        style="display: none; padding: 0 15px"
+      >
+        <div class="topup-container" style="margin-top: 20px">
+          <div class="input-group">
+            <label class="input-label">Юзернейм Telegram:</label>
+            <input
+              type="text"
+              id="stars-username"
+              class="steam-input-dark"
+              placeholder="@username"
+              oninput="handleStarsUser()"
+            />
+          </div>
+
+          <div class="input-group" style="margin-top: 15px">
+            <label class="input-label">Количество звёзд:</label>
+            <input
+              type="number"
+              id="stars-amount-input"
+              class="steam-input-dark"
+              value="100"
+              oninput="calculateStars()"
+            />
+            <div
+              id="stars-error"
+              class="error-text"
+              style="
+                display: none;
+                color: #ff4d4d;
+                font-size: 12px;
+                margin-top: 8px;
+              "
+            ></div>
+          </div>
+
+          <div
+            id="stars-presets-grid"
+            class="presets-grid-stars"
+            style="
+              display: grid;
+              grid-template-columns: repeat(2, 1fr);
+              gap: 10px;
+              margin-top: 15px;
+            "
+          ></div>
+
+          <div
+            id="stars-final-display"
+            class="stars-final-box"
+            style="display: none; margin-top: 30px"
+          >
+            <span class="final-label">К оплате</span>
+            <div class="total-wrapper">
+              <span id="stars-total-cost">170</span>
+              <span class="currency-symbol-final">₽</span>
+            </div>
+          </div>
+
+          <div id="stars-pay-block" style="display: none; margin-top: 25px">
+            <div class="payment-info-box">
+              <img src="./img/SBP.png" alt="СБП" class="sbp-icon" />
+              <div class="payment-method-desc">
+                Способ оплаты: <span>Система быстрых платежей</span>
+              </div>
+            </div>
+
+            <button class="pay-button-steam" onclick="payStars()">
+              Продолжить
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="apple-page" class="content-section" style="display: none">
+      <div class="apple-wrapper">
+        <div class="apple-selection-header">
+          Выберите валюту подарочной карты
+        </div>
+
+        <div class="apple-tabs">
+          <div
+            class="apple-tab active"
+            id="btn-apple-RUB"
+            onclick="selectAppleRegion('RUB')"
+          >
+            Россия
+          </div>
+          <div
+            class="apple-tab"
+            id="btn-apple-USD"
+            onclick="selectAppleRegion('USD')"
+          >
+            США
+          </div>
+          <div
+            class="apple-tab"
+            id="btn-apple-TRY"
+            onclick="selectAppleRegion('TRY')"
+          >
+            Турция
+          </div>
+        </div>
+
+        <div id="apple-products-grid" class="apple-grid-new"></div>
+      </div>
+    </div>
+
+    <div id="favorites-page" class="content-section" style="display: none">
+      <div id="fav-search-container"></div>
+      <div id="favorites-display" class="products-grid"></div>
+    </div>
+
+    <div id="cart-page" class="content-section" style="display: none">
+      <div id="cart-display" class="products-grid"></div>
+    </div>
+
+    <nav
+      id="bottom-menu"
+      style="
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 65px;
+        background: rgba(21, 26, 35, 0.95);
+        backdrop-filter: blur(15px);
+        display: none;
+        justify-content: space-around;
+        align-items: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        z-index: 9999;
+        padding: 0 20px;
+        padding-bottom: env(safe-area-inset-bottom);
+      "
+    >
+      <div class="nav-item-new" onclick="goHome()">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+      </div>
+
+      <div class="nav-item-new" onclick="resumeContent()" title="В каталог">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <rect x="3" y="3" width="7" height="7"></rect>
+          <rect x="14" y="3" width="7" height="7"></rect>
+          <rect x="14" y="14" width="7" height="7"></rect>
+          <rect x="3" y="14" width="7" height="7"></rect>
+        </svg>
+      </div>
+
+      <div
+        class="nav-item-new"
+        onclick="goToPage('favorites-page', 'Избранное')"
+        style="position: relative"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+          ></path>
+        </svg>
+        <span id="fav-badge" class="badge"></span>
+      </div>
+
+      <div
+        class="nav-item-new"
+        onclick="goToPage('cart-page', 'Корзина')"
+        style="position: relative"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+          <path d="M3 6h18" />
+          <path d="M16 10a4 4 0 0 1-8 0" />
+        </svg>
+        <span id="cart-badge" class="badge"></span>
+      </div>
+    </nav>
+
+    <div id="product-modal" class="product-modal-overlay">
+      <div class="modal-content">
+        <button class="close-modal" onclick="closeProductModal()">×</button>
+        <div id="modal-fav-btn" class="modal-heart-inline">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+            />
+          </svg>
+        </div>
+
+        <div class="modal-scroll-container">
+          <div class="modal-top-banner">
+            <img id="modal-img" src="" alt="" />
+          </div>
+          <div class="modal-body">
+            <div class="price-container">
+              <span id="modal-price"></span>
+              <span id="modal-discount" class="discount-badge"></span>
+            </div>
+
+            <h2 id="modal-name"></h2>
+
+            <button id="open-desc-btn" class="read-more-btn">
+              Прочитать описание товара
+            </button>
+          </div>
+        </div>
+
+        <div class="modal-fixed-footer">
+          <button class="buy-now-btn" id="modal-add-to-cart">
+            Добавить в корзину
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="description-modal"
+      class="product-modal-overlay"
+      style="z-index: 6000"
+    >
+      <div class="modal-content full-desc-card">
+        <button class="close-modal" onclick="closeDescriptionModal()">×</button>
+
+        <div class="modal-scroll-container">
+          <h3 style="color: white; margin-top: 25px; text-align: center">
+            Описание товара
+          </h3>
+          <div
+            id="full-description-text"
+            style="
+              color: rgba(255, 255, 255, 0.8);
+              line-height: 1.6;
+              padding: 20px 5px;
+              font-size: 15px;
+            "
+          ></div>
+        </div>
+
+        <div class="modal-fixed-footer">
+          <button class="buy-now-btn" onclick="closeDescriptionModal()">
+            Понятно
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="steam-region-modal">
+      <div class="modal-content">
+        <div style="margin-bottom: 25px">
+          <div style="font-size: 40px; margin-bottom: 10px">🌍</div>
+          <h2
+            style="color: white; margin: 0; font-size: 22px; font-weight: 700"
+          >
+            Регион магазина
+          </h2>
+          <p
+            style="
+              color: rgba(255, 255, 255, 0.5);
+              font-size: 14px;
+              margin-top: 8px;
+            "
+          >
+            Выберите регион вашего Steam аккаунта для отображения актуальных цен
+          </p>
+        </div>
+
+        <div class="region-buttons-grid">
+          <button class="region-btn" onclick="setSteamRegion('RU')">
+            <span><span class="flag">🇷🇺</span> Россия</span>
+          </button>
+
+          <button class="region-btn" onclick="setSteamRegion('KZ')">
+            <span><span class="flag">🇰🇿</span> Казахстан</span>
+          </button>
+
+          <button class="region-btn" onclick="setSteamRegion('UA')">
+            <span><span class="flag">🇺🇦</span> Украина</span>
+          </button>
+
+          <button class="region-btn" onclick="setSteamRegion('TR')">
+            <span><span class="flag">🇹🇷</span> Турция</span>
+          </button>
+
+          <button class="region-btn" onclick="setSteamRegion('IN')">
+            <span><span class="flag">🇮🇳</span> Индия</span>
+          </button>
+
+          <button class="no-account-btn" onclick="goToSteamAccounts()">
+            У меня нет аккаунта с данными регионами
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="steam-game-page">
+      <button class="back-btn-float" onclick="closeSteamGamePage()">
+        <span class="close-icon-line"></span>
+      </button>
+
+      <div class="game-cover-bg" id="game-pg-bg"></div>
+
+      <div class="game-content-shelf">
+        <div class="game-header">
+          <h1 id="game-pg-title">Elden Ring — Турция</h1>
+          <button
+            id="game-pg-fav-btn"
+            class="fav-heart-btn"
+            onclick="handleGameFavClick()"
+          >
+            <i class="fa-regular fa-heart"></i>
+          </button>
+        </div>
+
+        <div class="game-page-price" id="game-pg-price"></div>
+
+        <span class="section-label">Выберите издание</span>
+        <div class="editions-row" id="game-pg-editions"></div>
+
+        <span class="section-label">Способ получения</span>
+        <div id="game-pg-delivery-box"></div>
+
+        <span class="section-label">Дополнения (DLC)</span>
+        <div
+          id="game-pg-dlc"
+          class="steam-cards-row"
+          style="padding-left: 0; overflow-x: auto"
+        ></div>
+      </div>
+    </div>
+  </body>
+</html>

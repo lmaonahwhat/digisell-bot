@@ -1,0 +1,15 @@
+[
+  {
+    "id": "dying-light",
+    "title": "Dying Light",
+    "appid": 239140,
+    "markupPercent": 20,
+    "roundMode": "ceil",
+    "regions": {
+      "KZ": { "cc": "kz", "rateToRub": 0.2 },
+      "UA": { "cc": "ua", "rateToRub": 2 },
+      "IN": { "cc": "in", "rateToRub": 1 },
+      "TR": { "cc": "tr", "rateToRub": 80 }
+    }
+  }
+]

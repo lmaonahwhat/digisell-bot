@@ -1,0 +1,13 @@
+{
+  "name": "digisell-bot",
+  "version": "1.0.0",
+  "main": "webapp.js",
+  "scripts": {
+    "start": "node webapp.js"
+  },
+  "dependencies": {
+    "axios": "^1.15.0",
+    "express": "^4.19.2",
+    "node-telegram-bot-api": "^0.66.0"
+  }
+}

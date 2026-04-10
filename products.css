@@ -1,0 +1,1007 @@
+/* Основная карточка */
+.product-card {
+  display: flex;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 15px;
+  height: 130px;
+  width: 100%;
+  position: relative;
+}
+
+/* Правая панель (светлая полоса) */
+.product-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.02);
+  width: 50px;
+  min-width: 50px;
+  gap: 15px; /* Расстояние между иконками */
+}
+
+/* Старая рабочая иконка */
+.action-icon {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-icon svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.5);
+  stroke-width: 2;
+}
+
+.active-fav svg {
+  fill: #ff4b4b !important;
+  stroke: #ff4b4b !important;
+}
+
+/* Картинка теперь 110x110 */
+.product-img {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  background: #000;
+}
+
+.product-info {
+  flex-grow: 1;
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.product-name {
+  font-size: 15px; /* Крупнее текст */
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #fff;
+}
+
+.current-price {
+  font-size: 17px; /* Крупнее цена */
+  font-weight: 800;
+  color: #fff;
+}
+
+/* Крупные кнопки */
+.action-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px; /* Область нажатия 44x44px - стандарт Apple */
+  height: 44px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+/* Сами SVG внутри кнопок */
+.action-icon svg {
+  width: 30px; /* Сами иконки теперь 30px */
+  height: 30px;
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.4);
+  stroke-width: 2;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.product-card .action-icon.active-fav svg {
+  stroke: #ff3b30 !important;
+  fill: #ff3b30 !important;
+}
+
+/* Состояние: Корзина (Белое с дымкой) */
+.product-card .action-icon.active-cart svg {
+  stroke: #ffffff !important;
+  fill: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Анимация нажатия */
+.product-card .action-icon:active {
+  transform: scale(0.85);
+}
+
+/* Убедись, что базовый стиль SVG такой, чтобы не было конфликтов */
+.action-icon svg {
+  width: 30px;
+  height: 30px;
+  fill: none; /* По умолчанию прозрачно внутри */
+  stroke: rgba(255, 255, 255, 0.3); /* Тусклый контур в покое */
+  stroke-width: 1.8; /* Чуть тоньше линию для изящности */
+  transition: all 0.3s ease;
+}
+
+.price-row {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Отступ между ценой и скидкой */
+}
+
+.discount-badge {
+  background: linear-gradient(45deg, #ff5f6d, #ffc371); /* Как на фото */
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: white;
+}
+
+/* Контейнер сетки */
+.tg-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 10px 0;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.tg-grid-container .product-card:nth-child(3) {
+  grid-column: 1 / span 2;
+}
+
+/* Карточка */
+.tg-grid-container .product-card {
+  position: relative;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  height: auto;
+}
+
+/* СКИДКА: СТИЛЬ ИЗ ИЗБРАННОГО */
+.tg-grid-container .discount-badge {
+  background: linear-gradient(45deg, #ff5f6d, #ffc371); /* Как на фото */
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: white;
+}
+
+/* СЕРДЕЧКО: СТИЛЬ И АНИМАЦИЯ */
+.tg-grid-container .fav-btn-top {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  width: 34px;
+  height: 34px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+}
+
+.tg-grid-container .fav-btn-top svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.5);
+  stroke-width: 2;
+  transition: all 0.3s ease;
+}
+
+.tg-grid-container .fav-btn-top.active-fav svg {
+  stroke: #ff3b30 !important;
+  fill: #ff3b30 !important;
+}
+
+/* Анимация пульсации при клике */
+.tg-grid-container .fav-btn-top:active {
+  transform: scale(1.4);
+}
+
+.tg-grid-container .product-img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+.tg-grid-container .product-info {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tg-grid-container .price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Цена слева, скидка справа */
+  margin-top: 4px;
+}
+
+/* Временная мера, чтобы кнопка корзины исчезла отовсюду */
+.action-icon.active-cart,
+button[onclick*="toggleCart"] {
+  display: none !important;
+}
+
+/* Только для устройств с мышкой (ПК) */
+@media (hover: hover) {
+  .product-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+}
+
+/* Сетка 2х2 */
+.apple-grid-new {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 15px;
+  padding: 10px 15px 100px;
+}
+
+/* Контейнер карточки (без общего фона) */
+.apple-card-mini {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  cursor: pointer;
+}
+
+/* Обертка картинки для позиционирования сердечка */
+.apple-card-img-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 15px;
+  overflow: hidden;
+  background: #1c1c1e; /* Темный фон только под картинкой */
+}
+
+.apple-card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes heartBeat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+/* Картинка товара под сердцем */
+.apple-card-img-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #1c1c1e;
+}
+
+.apple-card-img-wrapper img {
+  width: 100%;
+  display: block;
+}
+
+/* Инфо-блок под картинкой */
+.apple-card-info {
+  padding: 8px 4px;
+}
+
+/* Строка цены и скидки */
+.apple-card-price-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.apple-card-price-row .price {
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.apple-card-price-row .discount {
+  color: #fff;
+  font-weight: 600;
+  background: linear-gradient(45deg, #ff5f6d, #ffc371); /* Как на фото */
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Название товара */
+.apple-card-info .name {
+  font-size: 15px;
+  color: #fff;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Универсальные стили для всех разделов (Steam, Apple, Избранное) */
+
+.apple-card-img-wrapper .fav-btn {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: absolute !important;
+  top: 8px !important;
+  right: 8px !important;
+  z-index: 10 !important;
+}
+
+.apple-card-img-wrapper .apple-card-discount {
+  display: block !important;
+  background: #ff3b30 !important;
+  color: white !important;
+  padding: 4px 8px !important;
+  border-radius: 8px !important;
+  font-weight: bold !important;
+  font-size: 12px !important;
+  position: absolute !important;
+  top: 8px !important;
+  left: 8px !important;
+  z-index: 10 !important;
+}
+
+/* Фикс, чтобы сетка Steam всегда была по 2 в ряд */
+#steam-games-display,
+#promo-games-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+}
+
+/* 1. Сначала сбрасываем всё в "серое" состояние для ВСЕХ типов иконок */
+.action-icon svg,
+.fav-btn-top svg,
+.fav-btn svg {
+  fill: none !important;
+  stroke: rgba(255, 255, 255, 0.3) !important; /* Тусклый цвет */
+  transition: all 0.3s ease !important;
+}
+
+/* 2. ОДНО правило, которое делает иконку красной */
+/* Мы используем [class*="active-fav"], чтобы оно работало на любой иконке с этим классом */
+.active-fav svg {
+  fill: #ff3b30 !important;
+  stroke: #ff3b30 !important;
+}
+
+#steam-game-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* Важно: оставляем место под меню, чтобы оно не перекрывалось */
+  height: calc(100vh - 70px);
+  background: #0d1117;
+  z-index: 500; /* Средний приоритет */
+  display: none;
+  overflow-y: auto;
+}
+
+/* Контейнер внутри, где лежит текст и DLC */
+.game-content-shelf {
+  padding: 20px;
+  /* Огромный отступ снизу, чтобы контент не скрывался за меню и скроллился до конца */
+  padding-bottom: 50px;
+}
+
+/* Чтобы нижнее меню точно было сверху */
+#bottom-nav,
+.navigation-bar,
+.nav-menu {
+  z-index: 1000 !important;
+}
+
+/* Фоновая картинка (занимает 50% высоты) */
+.game-cover-bg {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 55vh;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+/* Затемнение картинки сверху и снизу для читаемости */
+.game-cover-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(11, 14, 20, 1) 100%
+  );
+}
+
+/* Контентный блок, который наезжает на фото */
+.game-content-shelf {
+  position: relative;
+  z-index: 2;
+  background: #161a21;
+  border-radius: 30px 30px 0 0;
+  margin-top: -60px; /* Наезд на картинку */
+  padding: 25px 20px 50px 20px;
+  min-height: 60vh;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Шапка: Название и Сердце */
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.game-header h1 {
+  font-size: 24px;
+  color: #fff;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Анимированная кнопка Избранное */
+.fav-heart-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.fav-heart-btn i {
+  font-size: 22px;
+  color: #555; /* Цвет пустого сердца */
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.fav-heart-btn.is-active i {
+  color: #ff3b30;
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 8px rgba(255, 59, 48, 0.6));
+}
+
+@keyframes heartBeat {
+  0% {
+    transform: scale(1);
+  }
+  15% {
+    transform: scale(1.3);
+  }
+  30% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.15);
+  }
+  60% {
+    transform: scale(1);
+  }
+}
+
+.fav-heart-btn.animating i {
+  animation: heartBeat 0.6s ease-out;
+}
+
+/* Контейнер цены в модальном окне */
+.game-page-price {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Отступ между ценой и скидкой */
+  margin: 15px 0;
+}
+
+/* Текущая цена */
+.game-page-price .current-price {
+  font-size: 24px;
+  font-weight: 800;
+  color: #fff;
+}
+
+/* Скидка (Копируем стиль .discount из твоих карточек) */
+.game-page-price .discount {
+  color: #fff;
+  font-weight: 600;
+  background: linear-gradient(45deg, #ff5f6d, #ffc371); /* Как на фото */
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Фикс для заголовка, чтобы не налезал на цену */
+#game-pg-title {
+  margin-bottom: 5px;
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+/* Секции (Издания, Способ, DLC) */
+.section-label {
+  display: block;
+  color: #888;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  margin-top: 25px;
+}
+
+/* Кнопки изданий */
+.editions-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.edition-item {
+  background: #21262e;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edition-item.active {
+  border-color: #007aff;
+  background: rgba(0, 122, 255, 0.1);
+}
+
+/* Сама круглая кнопка */
+.back-btn-float {
+  position: fixed; /* Чтобы кнопка не улетала при скролле страницы игры */
+  top: 15px;
+  left: 15px;
+  width: 32px;
+  height: 32px;
+  background: rgba(0, 0, 0, 0.6); /* Полупрозрачный черный */
+  backdrop-filter: blur(10px); /* Эффект стекла */
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999; /* Максимальный приоритет */
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+}
+
+/* Рисуем крестик через псевдоэлементы */
+.close-icon-line {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-icon-line::before,
+.close-icon-line::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 2px;
+  background-color: #ffffff; /* Белый цвет линий */
+  border-radius: 2px;
+}
+
+/* Поворачиваем линии, чтобы получился крестик */
+.close-icon-line::before {
+  transform: rotate(45deg);
+}
+
+.close-icon-line::after {
+  transform: rotate(-45deg);
+}
+
+/* Эффект при нажатии */
+.back-btn-float:active {
+  transform: scale(0.9);
+  background: rgba(0, 0, 0, 0.9);
+}
+
+/* Общий стиль контейнера */
+.delivery-status-line {
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  margin-bottom: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Для РФ, КЗ, УА (Подарки) — спокойный синий подтон */
+.delivery-badge-gift {
+  background: rgba(52, 152, 219, 0.08);
+  color: #5dade2;
+  border-color: rgba(93, 173, 226, 0.3);
+}
+
+/* Для Турции, Индии (Вход) — спокойный золотистый подтон */
+.delivery-badge-login {
+  background: rgba(241, 196, 15, 0.08);
+  color: #f4d03f;
+  border-color: rgba(244, 208, 63, 0.3);
+}
+
+/* Убираем лишние отступы у меток секций */
+.section-label {
+  display: block;
+  color: #888;
+  font-size: 12px;
+  text-transform: uppercase;
+  margin: 15px 0 8px 0;
+}
+
+/* Кнопка в хедере карточки */
+.fav-heart-btn {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  cursor: pointer;
+  padding: 5px;
+  transition: transform 0.2s ease;
+}
+
+/* Иконка внутри */
+.fav-heart-btn i {
+  font-size: 24px;
+  color: #555; /* Цвет пустого сердца */
+  transition: color 0.3s ease;
+}
+
+/* Активное состояние */
+.fav-heart-btn.is-active i {
+  color: #ff3b30 !important; /* Красное сердце */
+  font-weight: 900; /* Чтобы иконка стала solid, если юзаешь FontAwesome */
+}
+
+.fav-heart-btn:active {
+  transform: scale(1.3);
+}
+
+#steam-game-page {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important; /* На весь экран */
+  background: #151a23 !important; /* Цвет как у body */
+  z-index: 9999 !important;
+  overflow-y: auto !important;
+  display: none;
+}
+
+/* Это контейнер с контентом внутри страницы */
+.game-content-shelf {
+  padding: 20px 15px 100px 15px !important; /* 100px снизу, чтобы контент не залезал ПОД меню */
+  background: #151a23;
+  min-height: 100vh;
+}
+
+/* Кнопка сердца - убираем все лишнее */
+.fav-heart-btn {
+  background: none !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  cursor: pointer;
+}
+
+.fav-heart-btn i {
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.3);
+  transition:
+    color 0.2s,
+    transform 0.2s;
+}
+
+.fav-heart-btn.is-active i {
+  color: #ff3b30 !important; /* Красный */
+}
+
+/* Фикс нижнего меню, чтобы оно всегда было ПОВЕРХ игры */
+#bottom-menu {
+  z-index: 10000 !important;
+  position: fixed !important;
+  bottom: 0 !important;
+}
+
+.steam-game-page-inner {
+  padding: 16px;
+  background: #101418;
+  color: #fff;
+  min-height: 100vh;
+}
+
+.steam-game-close-btn {
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 12px;
+  background: #1b232c;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+
+.steam-game-hero {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.steam-game-cover {
+  width: 100%;
+  border-radius: 18px;
+  object-fit: cover;
+  background: #1a1f25;
+}
+
+.steam-game-main {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.steam-game-region {
+  font-size: 14px;
+  color: #9fb0c2;
+}
+
+.steam-game-title {
+  font-size: 32px;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.steam-game-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.steam-game-badge {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #1e2a35;
+  color: #d8e5f2;
+  font-size: 13px;
+}
+
+.steam-game-price-box {
+  background: #151c24;
+  border: 1px solid #26313d;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.steam-game-price-main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.steam-game-price-current {
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.steam-game-price-old {
+  font-size: 18px;
+  color: #7f8b98;
+  text-decoration: line-through;
+}
+
+.steam-game-price-discount {
+  background: #1f8f52;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.steam-game-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.steam-buy-btn {
+  flex: 1;
+  min-height: 48px;
+  border: none;
+  border-radius: 14px;
+  background: #1e88ff;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.steam-fav-btn {
+  width: 48px;
+  min-width: 48px;
+  border: none;
+  border-radius: 14px;
+  background: #1b232c;
+  color: #fff;
+  cursor: pointer;
+}
+
+.steam-game-section {
+  margin-top: 24px;
+  padding: 18px;
+  border-radius: 18px;
+  background: #151c24;
+  border: 1px solid #26313d;
+}
+
+.steam-game-section h3 {
+  margin: 0 0 14px;
+  font-size: 20px;
+}
+
+.steam-game-description,
+.steam-game-delivery {
+  color: #d0dae4;
+  line-height: 1.6;
+}
+
+.steam-info-list {
+  margin: 0;
+  padding-left: 18px;
+  color: #d0dae4;
+  line-height: 1.7;
+}
+
+.steam-editions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.steam-edition-btn {
+  border: 1px solid #2a3542;
+  background: #111820;
+  color: #fff;
+  border-radius: 14px;
+  padding: 14px;
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.steam-edition-btn.active {
+  border-color: #1e88ff;
+  background: #16283e;
+}
+
+.edition-name {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.edition-price {
+  font-size: 14px;
+  color: #9ec7ff;
+}
+
+.steam-dlc-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.steam-dlc-card {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 14px;
+  background: #111820;
+  border: 1px solid #26313d;
+  cursor: pointer;
+}
+
+.steam-dlc-card__img {
+  width: 78px;
+  height: 78px;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #1b232c;
+}
+
+.steam-dlc-card__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.steam-dlc-card__title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.steam-dlc-card__price-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.steam-dlc-card__price {
+  color: #d8e5f2;
+  font-weight: 600;
+}
+
+.steam-dlc-card__discount {
+  background: #1f8f52;
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.steam-empty-note {
+  color: #9fb0c2;
+}
+
+@media (max-width: 768px) {
+  .steam-game-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .steam-game-title {
+    font-size: 24px;
+  }
+
+  .steam-editions-grid,
+  .steam-dlc-grid {
+    grid-template-columns: 1fr;
+  }
+}
