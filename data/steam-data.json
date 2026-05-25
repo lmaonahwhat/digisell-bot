@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-25T13:35:35.054Z",
+  "updatedAt": "2026-05-25T16:27:53.581Z",
   "games": [
     {
       "id": "dying-light",
@@ -13,7 +13,7 @@
           "oldAmount": 1488,
           "amount": 298,
           "discount": "-80%",
-          "updatedAt": "2026-05-25T13:35:35.280Z"
+          "updatedAt": "2026-05-25T16:27:53.999Z"
         },
         "UA": {
           "sourceCurrency": "UAH",
@@ -22,7 +22,7 @@
           "oldAmount": 838,
           "amount": 166,
           "discount": "-80%",
-          "updatedAt": "2026-05-25T13:35:35.413Z"
+          "updatedAt": "2026-05-25T16:27:54.207Z"
         },
         "IN": {
           "sourceCurrency": "INR",
@@ -31,7 +31,7 @@
           "oldAmount": 1619,
           "amount": 323,
           "discount": "-80%",
-          "updatedAt": "2026-05-25T13:35:35.562Z"
+          "updatedAt": "2026-05-25T16:27:54.482Z"
         },
         "TR": {
           "sourceCurrency": "USD",
@@ -40,7 +40,7 @@
           "oldAmount": 1728,
           "amount": 346,
           "discount": "-80%",
-          "updatedAt": "2026-05-25T13:35:35.702Z"
+          "updatedAt": "2026-05-25T16:27:54.931Z"
         }
       }
     }
