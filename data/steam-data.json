@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-09T16:06:23.039Z",
+  "updatedAt": "2026-07-09T18:19:07.875Z",
   "games": [
     {
       "id": "dying-light",
@@ -9,38 +9,38 @@
         "KZ": {
           "sourceCurrency": "KZT",
           "sourceInitial": 6200,
-          "sourceFinal": 620,
+          "sourceFinal": 6200,
           "oldAmount": 1488,
-          "amount": 149,
-          "discount": "-90%",
-          "updatedAt": "2026-07-09T16:06:23.362Z"
+          "amount": 1488,
+          "discount": "",
+          "updatedAt": "2026-07-09T18:19:08.042Z"
         },
         "UA": {
           "sourceCurrency": "UAH",
-          "sourceInitial": 659,
-          "sourceFinal": 65,
-          "oldAmount": 1582,
-          "amount": 156,
-          "discount": "-90%",
-          "updatedAt": "2026-07-09T16:06:23.698Z"
+          "sourceInitial": 349,
+          "sourceFinal": 349,
+          "oldAmount": 838,
+          "amount": 838,
+          "discount": "",
+          "updatedAt": "2026-07-09T18:19:08.166Z"
         },
         "IN": {
           "sourceCurrency": "INR",
           "sourceInitial": 1349,
-          "sourceFinal": 134,
+          "sourceFinal": 1349,
           "oldAmount": 1619,
-          "amount": 161,
-          "discount": "-90%",
-          "updatedAt": "2026-07-09T16:06:23.972Z"
+          "amount": 1619,
+          "discount": "",
+          "updatedAt": "2026-07-09T18:19:08.297Z"
         },
         "TR": {
           "sourceCurrency": "USD",
           "sourceInitial": 18,
-          "sourceFinal": 1.8,
+          "sourceFinal": 18,
           "oldAmount": 1728,
-          "amount": 173,
-          "discount": "-90%",
-          "updatedAt": "2026-07-09T16:06:24.053Z"
+          "amount": 1728,
+          "discount": "",
+          "updatedAt": "2026-07-09T18:19:08.503Z"
         }
       }
     }
